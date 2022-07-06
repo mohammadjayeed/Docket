@@ -6,3 +6,4 @@ class TaskBuster(models.Model):
 
     def __str__(self):
         return "Task no. - " + str(self.id) + ", Completion status: " + str(self.completed)
+    

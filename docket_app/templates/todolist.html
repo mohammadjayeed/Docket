@@ -40,46 +40,48 @@
     </br>
 </form>
 </br>
-<table class="table table-bordered">
+<table class="table table-striped-columns">
     <thead class = "table-light">
-        <tr class="table-striped-columns">
-            <th scope="col">Task</th>
-            <th scope="col">Status</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+        <tr class=" row">
+            <th class="col-6">Task</th>
+            <th class="col-3">Status</th>
+            <th class="col-1">Edit</th>
+            <th class="col-2">Delete</th>
         </tr>
     </thead>
     <tbody>
         {% if all_tasks %}
             {% for object in all_tasks %}
-                {% include "edit.html" %}
-                {% if object.completed %}
-                    <tr class="table-warning">
-                        <td>{{ object.task }}</td>
-                        <td><a href="{% url 'todo_mark' object.id %}">
+            {% include "edit.html" %}
+                {% if object.completed %} 
+                
+                    <tr class="table-warning row">
+                        <td class="col-6">{{ object.task }}</td>
+                        <td class="col-3"><a href="{% url 'todo_mark' object.id %}">
                             <button type="button" class="btn btn-success btn-secondary btn-sm">Mark this pending</button></td>
-                        <td>
+                        <td class="col-1">
                             <a data-bs-toggle="modal" data-bs-target="#editModal{{ object.id }}">
                                 <button type="button" class="btn btn-info btn-secondary btn-sm">Edit</button>
                             </a>
                         </td>
-                        <td >
+                        <td class="col-2">
                             <a href="{% url 'todo_delete' object.id %}">
                                 <button type="button" class="btn btn-danger btn-secondary btn-sm">Delete</button>
                             </a>
                         </td>
                     </tr>
                 {% else %}
-                    <tr >
-                        <td>{{ object.task }}</td>
-                        <td><a href="{% url 'todo_mark' object.id %}">
+                
+                    <tr class="row">
+                        <td class="col-6">{{ object.task }}</td>
+                        <td class="col-3"><a href="{% url 'todo_mark' object.id %}">
                             <button type="button" class="btn btn-dark btn-secondary btn-sm">Mark this completed</button></td>
-                        <td>
+                        <td class="col-1">
                             <a data-bs-toggle="modal" data-bs-target="#editModal{{ object.id }}">
                                 <button type="button" class="btn btn-info btn-secondary btn-sm">Edit</button>
                             </a>
                         </td>
-                        <td >
+                        <td class="col-2">
                             <a href="{% url 'todo_delete' object.id %}">
                                 <button type="button" class="btn btn-danger btn-secondary btn-sm">Delete</button>
                             </a>
@@ -103,6 +105,6 @@
       {% endif %}
       <li class="page-item"><a class="page-link" href="?pg={{ all_tasks.paginator.num_pages }}">>></a></li>
     </ul>
-  </nav>
+  </nav> 
 </div>
 {% endblock message %}

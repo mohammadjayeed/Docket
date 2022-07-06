@@ -30,7 +30,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form id="modal-details"
+                    <form id="{{object.id}}"
                           action="{% url 'todo_edit' object.id %}"
                           method="POST">
                         <div class="modal-body">
@@ -46,7 +46,7 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit"
                                     class="btn btn-primary"
-                                    form="modal-details"
+                                    form="{{object.id}}"
                                     value="update">Save changes</button>
                         </div>
                     </div>

@@ -1,9 +1,13 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import TaskBuster
-from .forms import TaskForm
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.urls import reverse
+
+from .forms import TaskForm
+from .models import TaskBuster
+
+
 def todolist(request):
     if request.method == 'POST':
         form = TaskForm(request.POST or None)
@@ -13,17 +17,18 @@ def todolist(request):
         return redirect("todo")
     else:
         all_tasks = TaskBuster.objects.all()
-        paginator = Paginator(all_tasks,6)
+        paginator = Paginator(all_tasks,5)
         page = request.GET.get('pg')
         all_tasks = paginator.get_page(page)
         context = {
             'all_tasks':all_tasks
         }
+        
         return render(request, 'todolist.html', context)
 def todolist_delete(request, pk):
     particular_task = TaskBuster.objects.get(pk=pk)
     particular_task.delete()
-    return redirect("todo")
+    return redirect(request.META['HTTP_REFERER'])
 
 
 def todolist_edit(request,pk):
@@ -33,10 +38,10 @@ def todolist_edit(request,pk):
         if form.is_valid():
             form.save()
         messages.success(request,("Task Updated"))
-    return redirect("todo")
+    return redirect(request.META['HTTP_REFERER'])
 
 def todolist_mark_task(request,pk):
-
+    
     particular_task = TaskBuster.objects.get(pk=pk)
 
     if particular_task.completed == True:
@@ -44,9 +49,6 @@ def todolist_mark_task(request,pk):
     else:
         particular_task.completed = True
     
-    print(type(particular_task))
     particular_task.save()
-
-
-
-    return redirect("todo")
+    
+    return redirect(request.META['HTTP_REFERER'])
