@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import TaskBuster
 from .forms import TaskForm
 from django.contrib import messages
-
+from django.core.paginator import Paginator
 def todolist(request):
     if request.method == 'POST':
         form = TaskForm(request.POST or None)
@@ -12,7 +12,10 @@ def todolist(request):
             messages.success(request,("Added Task"))
         return redirect("todo")
     else:
-        all_tasks = TaskBuster.objects.all
+        all_tasks = TaskBuster.objects.all()
+        paginator = Paginator(all_tasks,6)
+        page = request.GET.get('pg')
+        all_tasks = paginator.get_page(page)
         context = {
             'all_tasks':all_tasks
         }
@@ -35,7 +38,7 @@ def todolist_edit(request,pk):
 def todolist_mark_task(request,pk):
 
     particular_task = TaskBuster.objects.get(pk=pk)
-    
+
     if particular_task.completed == True:
         particular_task.completed = False
     else:
