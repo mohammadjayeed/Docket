@@ -31,3 +31,19 @@ def todolist_edit(request,pk):
             form.save()
         messages.success(request,("Task Updated"))
     return redirect("todo")
+
+def todolist_mark_task(request,pk):
+
+    particular_task = TaskBuster.objects.get(pk=pk)
+    
+    if particular_task.completed == True:
+        particular_task.completed = False
+    else:
+        particular_task.completed = True
+    
+    print(type(particular_task))
+    particular_task.save()
+
+
+
+    return redirect("todo")
