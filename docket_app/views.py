@@ -7,6 +7,11 @@ from django.urls import reverse
 from .forms import TaskForm
 from .models import TaskBuster
 
+def index(request):
+    context = {
+        'welcome':"hello",
+        }
+    return render(request, 'index.html',context)
 
 def todolist(request):
     if request.method == 'POST':

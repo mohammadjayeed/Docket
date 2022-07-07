@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+
+    <title> welcome aboard </title>
+
+{% endblock title %}
+
+
+{% block message %}
+
+    <div class="container">
+
+        <div class="row">
+                <img src="{% static 'images/bg-img.jpg' %}" alt="background" class = "rounded-lg"style="display: block;margin-top:5%;margin-left: auto;margin-right: auto;width: 100%;" >
+            
+        </div> 
+
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <center><p class="h3 text-secondary"> Plan your work for today and everyday, </p></center>
+                <center><p class="h1"> Then work your plan </p></center>
+            
+            </div> 
+            <div class="row mt-3">
+            <center><a href="{%url 'todo'%}"><button type="button" class="btn btn-primary btn-sm btn-success">Start</button></a></center>
+            </div>
+        </div> 
+
+    </div>
+
+{% endblock message %}
