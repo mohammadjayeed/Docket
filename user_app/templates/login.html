@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Login - Docket</title>
+{% endblock title %}
+
+{% block message %}
+
+    
+        
+
+    <div class="container" style="justify-content: center;display: flex;margin-top:auto;margin-left: auto;margin-right: auto;">
+
+        
+    
+        <form action="" method="POST" class="mt-5 col-3">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-warning mt-3"> Login </button>
+        </form>
+    
+        {% comment %} <script>
+            setTimeout(function() {
+            let errors = document.getElementsByClassName('invalid-feedback');
+            while(errors.length > 0) {
+                errors[0].parentNode.removeChild(errors[0]);
+            }
+            }, 3000);
+        </script> {% endcomment %}
+    </div>
+{% endblock message %}

@@ -10,7 +10,7 @@ def registration(request):
         if registration_form.is_valid():
             registration_form.save()
             messages.success(request,("Success, please login to continue"))
-            return redirect('reg_todo')
+            return redirect('registration_todo')
 
     else:
 
