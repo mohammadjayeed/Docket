@@ -7,6 +7,8 @@ urlpatterns = [
     path('edit/<int:pk>/',todolist_edit,name="todo_edit"),
     path('mark/<int:pk>/',todolist_mark_task,name="todo_mark"),
     
+
+    
     
 
 ]

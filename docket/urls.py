@@ -6,4 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',docket_app_views.index,name="index"),
     path('todolist/', include("docket_app.urls")),
+    path('account/', include("user_app.urls")),
 ]

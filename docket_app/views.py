@@ -8,10 +8,8 @@ from .forms import TaskForm
 from .models import TaskBuster
 
 def index(request):
-    context = {
-        'welcome':"hello",
-        }
-    return render(request, 'index.html',context)
+   
+    return render(request, 'index.html',{})
 
 def todolist(request):
     if request.method == 'POST':
