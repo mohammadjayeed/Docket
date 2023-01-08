@@ -1,5 +1,5 @@
 ## completed, may get an update
-[web link](https://docket.up.railway.app)
+[Project Showcase Link](https://docket.up.railway.app)
 ### Highlights
 - Custom App Logo
 - Bootstrap Modal implementation with django
