@@ -1,5 +1,5 @@
 ## completed, may get an update
-[Project Showcase Link](https://docket.up.railway.app){:target="_blank" rel="noopener"}
+[Project Showcase Link](https://docket.up.railway.app)
 ### Highlights
 - Custom App Logo
 - Bootstrap Modal implementation with django
